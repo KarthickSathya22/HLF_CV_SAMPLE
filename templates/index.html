@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loan Application Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, textarea, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+      h1 {
+      position: absolute;
+      margin: 0;
+      font-size: 32px;
+      color: #fff;
+      z-index: 2;
+      }
+      .testbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 20px;
+      }
+      form {
+      width: 65%;
+      padding: 20px;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 0 20px 0 #095484; 
+      }
+      .banner {
+      position: relative;
+      height: 0px; 
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      }
+      .banner::after {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.5); 
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      }
+      input, select, textarea {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      }
+      input {
+      width: calc(100% - 10px);
+      padding: 5px;
+      }
+      select {
+      width: 100%;
+      padding: 7px 0;
+      background: transparent;
+      }
+      .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder, a {
+      color: #095484;
+      }
+      .item input:hover, .item select:hover, .item textarea:hover {
+      border: 1px solid transparent;
+      box-shadow: 0 0 6px 0 #095484;
+      color: #095484;
+      }
+      .item {
+      position: relative;
+      margin: 10px 0;
+      }
+      input[type="date"]::-webkit-inner-spin-button {
+      display: none;
+      }
+      .item i, input[type="date"]::-webkit-calendar-picker-indicator {
+      position: absolute;
+      font-size: 20px;
+      color: #a9a9a9;
+      }
+      .item i {
+      right: 2%;
+      top: 30px;
+      z-index: 1;
+      }
+      [type="date"]::-webkit-calendar-picker-indicator {
+      right: 1%;
+      z-index: 2;
+      opacity: 0;
+      cursor: pointer;
+      }
+      input[type=radio], input[type=checkbox]  {
+      display: none;
+      }
+      label.radio, label.check {
+      position: relative;
+      display: inline-block;
+      margin: 5px 20px 15px 0;
+      cursor: pointer;
+      }
+      .question span {
+      margin-left: 30px;
+      }
+      span.required {
+      margin-left: 0;
+      color: red;
+      }
+      .checkbox-item label {
+      margin: 5px 20px 10px 0;
+      }
+      label.radio:before, label.check:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      }
+      label.radio:before {
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      border: 2px solid #095484;
+      }
+      label.check:before {
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 2px;
+      border: 1px solid #095484;
+      }
+      input[type=checkbox]:checked + .check:before {
+      background: #095484;
+      }
+      label.radio:after {
+      left: 5px;
+      border: 3px solid #095484;
+      }
+      label.check:after {
+      left: 4px;
+      border: 3px solid #fff;
+      }
+      label.radio:after, label.check:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      width: 8px;
+      height: 4px;
+      background: transparent;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      opacity: 0;
+      }
+      input[type=radio]:checked + label:after, input[type=checkbox]:checked + label:after {
+      opacity: 1;
+      }
+      .btn-block {
+      margin-top: 10px;
+      text-align: center;
+      }
+      
+      button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      background: #095484;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background: #0666a3;
+      }
+      .title-block select, .title-block input {
+      margin-bottom: 10px;
+      }
+      @media (min-width: 568px) {
+      .title-block {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .title-block select {
+      width: 200px;
+      margin-bottom: 0;
+      }
+      .title-block input {
+      width: 189px;
+      margin-bottom: 0;
+      }
+      .city-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .city-item input {
+      width: calc(50% - 20px);
+      }
+      .city-item select {
+      width: calc(50% - 8px);
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="testbox">
+    <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+      <br>
+      <fieldset>
+      <legend><b>Personal Information</b></legend>
+      <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>Gender</b></p>
+          <select name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
+          </div>
+          <div>
+          <p><b>Number of Dependants</b></p>
+          <input type="text" id="dep" name="dependants" required/>
+          </div>
+          <div>
+          <p><b>Number of Years Staying</b></p>
+          <input type="text" name="staying_year" required/>
+          </div>
+          </div>
+      </div>
+      <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>Borrower Age</b></p>
+          <input type="text" name="age" required/>
+          </div>
+          <div>
+          <p><b>Martial Status</b></p>
+          <select name="martial_status" required>
+            <option value="">Select Category</option>
+            <option value="2750">Married</option>
+            <option value="2751">Unmarried</option>
+          </select>
+          </div>
+          <div>
+          <p><b>Type Of Residence</b></p>
+          <select name="residence" required>
+            <option value="">Select Category</option>
+            <option value="2755">Own</option>
+            <option value="2756">Rent/Lease</option>
+          </select>
+          </div>
+          </div>
+      </div>
+      <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>Industry Type</b></p>
+          <select name="industrytype" onmousedown="if(this.options.length>5){this.size=5;}" onchange="this.blur()"  onblur="this.size=0;" required>
+            <option value="">Select Industry</option>
+            <option value="1782">Salaried</option>
+            <option value="1783">Self Employee</option>
+            <option value="603">Agriculture</option>
+            <option value="604">Passenger Transportation</option>
+            <option value="605">Construction</option>
+            <option value="875">Infrastructure</option>
+            <option value="876">Cement</option>
+            <option value="877">Oil and Gas</option>
+            <option value="878">Government Contract</option>
+            <option value="658">Mine</option>
+            <option value="879">Others</option>
+          </select>
+          </div>
+          <div>
+          <p><b>Total Income per Month</b></p>
+          <input type="text" name="totincome" required/>
+          </div>
+          <div>
+          <p><b>Total Expense per Month</b></p>
+          <input type="text" name="totexpense" required/>
+          </div>
+          </div>
+      </div>
+      <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>Gross Surplus per Month</b></p>
+          <input type="text" name="gross_surplus" disabled/>
+          </div>
+          <div>
+          <p><b>Upload Cibil Statement</b></p>
+          <input type="file" name="cibil" accept="application/vnd.ms-excel" required/>
+          </div>
+          <div>
+          <p><b>Banking Period</b></p>
+          <select name="bank_period" required>
+            <option value="">Select Category</option>
+            <option value="1">More than 3 years</option>
+            <option value="2">Between 1 to 3 years</option>
+            <option value="3">More than 6 months</option>
+            <option value="4">Less than 6 months</option>
+          </select>
+          </div>
+          </div>
+      </div>
+      <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>Upload Bank Statement</b></p>
+          <input type="file" name="file" accept="application/vnd.ms-excel" required/>
+          </div>
+          <div>
+          <p><b>Customer Profile</b></p>
+          <select name="profile" required>
+            <option value="">Select Category</option>
+            <option value="2692">Captive Class</option>
+            <option value="2693">Retail Class</option>
+            <option value="2694">Strategy Class</option>
+          </select>
+          </div>
+          <div>
+          <p><b>Customer Segment</b></p>
+          <select name="segment" required>
+            <option value="">Select Category</option>
+            <option value="2695">First Time Buyer</option>
+            <option value="2696">First Time Buyer Plus</option>
+            <option value="2697">Medium Fleet Operators</option>
+            <option value="2698">Small Fleet Operators</option>
+          </select>
+          </div>
+          </div>
+      </div>
+      <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>Load Type</b></p>
+          <select name="market_load" required>
+            <option value="">Select Category</option>
+            <option value="566">Market Load</option>
+            <option value="568">Own Contract</option>
+            <option value="569">Attached To Fleet Operator</option>
+          </select>
+          </div>
+          <div>
+          <p><b>Number of Years In Market</b></p>
+          <input type="text" name="tot_years" required/>
+          </div>
+	      <div>
+          <p><b>Asset Value</b></p>
+          <input type="text" name="asset" required/>
+          </div>
+          </div>
+         </div>
+         <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>HLF Score</b></p>
+          <input type="text" name="score" required/>
+          </div>
+          <div>
+          <p><b>Cibil Score</b></p>
+          <input type="text" name="another_score" disabled/>
+          </div>
+          <div>
+          <p><b>Overdue</b></p>
+          <input type="text" name="od" disabled/>
+          </div>
+          </div>
+       </div>
+       <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>PAN Number</b></p>
+          <input type="text" name="pan" required/>
+          </div>
+          </div>
+      </div>
+      </fieldset>
+      <br>
+      <fieldset>
+      <legend><b>Product Information</b></legend>
+      <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>Product Category</b></p>
+          <select name="productcat" onmousedown="if(this.options.length>5){this.size=5;}" onchange="this.blur()"  onblur="this.size=0;" required>
+            <option value="">Select Product</option>
+            <option value="1784">Loan Against Property</option>
+            <option value="926">Car</option>
+            <option value="912">Multi Utility Vehicle</option>
+            <option value="945">Vikram</option>
+            <option value="1402">Tractor</option>
+            <option value="1373">Used Vehicle</option>
+            <option value="1672">Tipper</option>
+            <option value="1664">Farm Equipment</option>
+            <option value="1541">Two Wheeler</option>
+            <option value="634">Intermediate Commercial Vehicle</option>
+            <option value="527">Heavy Commercial Vehicle</option>
+            <option value="528">Construction Equipment</option>
+            <option value="529">Three Wheelers</option>
+            <option value="530">Light Commercial Vehicle</option>
+            <option value="531">Small Commercial Vehicle</option>
+            <option value="738">Medium Commercial Vehicle</option>
+            <option value="783">Buses</option>
+          </select>
+          </div>
+          <div>
+          <p><b>Type Of Brand</b></p>
+          <select name="brand" onmousedown="if(this.options.length>5){this.size=5;}" onchange="this.blur()"  onblur="this.size=0;" required>
+            <option value="">Select Brand</option>
+            <option value="564">Ashok Leyland</option>
+            <option value="565">Tata Motors</option>
+            <option value="740">Caterpillar</option>
+            <option value="739">Ace</option>
+            <option value="741">Escorts Ltd</option>
+            <option value="743">JCB</option>
+            <option value="744">L&T-Komatsu</option>
+            <option value="745">L&T-Case</option>
+            <option value="723">Eicher Motors</option>
+            <option value="815">JCBL</option>
+            <option value="904">Hyundai Construction Equipments Ltd</option>
+            <option value="1377">ELGI</option>
+            <option value="1433">Ajax Fiori Engineering Ltd</option>
+            <option value="1476">Hercles</option>
+            <option value="1416">Mahindra Navistar Automotives Ltd</option>
+            <option value="1501">Mahindra Construction Equpiment</option>
+            <option value="1620">Dossan</option>
+            <option value="1623">Liugong</option>
+            <option value="1638">Kobelco Construction Equipment Ltd</option>
+            <option value="1639">Sany</option>
+            <option value="1659">Tata Hitachi</option>
+            <option value="1681">Case New Holland</option>
+            <option value="1693">Volvo</option> 
+            <option value="1380">Kirloskar</option>
+            <option value="1710">Action Construction Equipment Ltd</option>
+            <option value="1758">Wirtgen India Ltd</option>
+            <option value="1760">Komatsu Ltd</option>
+            <option value="1768">L&T Case Equipment Ltd</option>
+            <option value="1778">Tata Hitachi Construction Machinery Ltd</option>
+            <option value="1781">Larsen & Tourbo Ltd</option>
+            <option value="1816">Atlas Copco Ltd</option>
+            <option value="1839">Scania Commercial Vehicles</option>
+            <option value="1848">KYB Conmat</option>
+            <option value="1861">Man Trucks Ltd</option>
+            <option value="1864">Sany Heavy Industry Ltd</option>
+            <option value="1868">Jackson Ltd</option>
+            <option value="1985">Bharat Benz</option>
+            <option value="2143">Bull Machines Ltd</option>
+            <option value="2149">Terex India Ltd</option>
+            <option value="2399">Rock Master</option>
+            <option value="2420">Vermeer</option>
+            <option value="2424">Jiangsu Dilong Heavy Machinery Ltd</option>
+            <option value="2818">Dynapac Road Constrcution Ltd</option>
+            <option value="2886">Kesar Road Equipments</option>
+          </select>
+          </div>
+          <div>
+          <p><b>Vehicle Price</b></p>
+          <input type="text" name="chasasset" required/>
+          </div>
+          </div>
+      </div>
+      <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>Type of Vehicle</b></p>
+          <select name="vehicle" id="type_v" onchange="myFunction()" required>
+            <option value="">Select Category</option>
+            <option value="1">New Vehicle</option>
+            <option value="2">Used Vehicle</option>
+          </select>
+          </div>
+          <div>
+          <p><b>Used Years</b></p>
+          <input type="text" name="vehicle_age" id="age_v"/>
+          </div>
+          <script>
+          function myFunction() {
+          var value = document.getElementById("type_v").value;
+          if(value == 1)
+          {
+          document.getElementById("age_v").disabled = true;
+          }
+          else
+          {
+          document.getElementById("age_v").disabled = false;
+          };
+          }
+          </script>
+          </div>
+      </div>
+      </fieldset>
+      <br>
+      <fieldset>
+      <legend><b>Finance Information</b></legend>
+      <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>Initial Amount</b></p>
+          <input type="text" name="chasinitial" />
+          </div>
+          <div>
+          <p><b>Finance Amount</b></p>
+          <input type="text" name="chasfinance" disabled/>
+          </div>
+          <div>
+           <p><b>Interest</b></p>
+           <input type="text" name="finaninterest" required/>
+          </div>
+          </div>
+      </div>
+      <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>Tenure(Months)</b></p>
+          <input type="text" name="tenure" required/>
+          </div>
+          <div>
+          <p><b>Installment Count</b></p>
+          <input type="text" name="instalcount" required/>
+          </div>
+          <div>
+          <p><b>EMI</b></p>
+          <input type="text" name="emi" disabled/>
+          </div>
+          </div>
+      </div>
+      <div class="item">
+          <div class="title-block">
+          <div>
+          <p><b>Loan Availed</b></p>
+          <input type="text" name="gross_loan" disabled/>
+          </div>
+          </div>
+      </div>
+      </fieldset>
+        <div class="btn-block">
+          <button type="submit">Predict Probability</button>
+        </div>
+    </form>
+    </div>
+  </body>
+</html>
