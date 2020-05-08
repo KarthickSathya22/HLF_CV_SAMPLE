@@ -13,7 +13,7 @@
       table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
-      width: 70%;
+      width: 100%;
       }
       td, th {
       border: 1px solid #dddddd;
@@ -322,6 +322,7 @@
              </tr>
             </table>
             <div>
+            <br>
             <center><caption><b>Probability Based On Data</b></caption></center>
             <center><h2>{{ "{} - {}%".format(status,prediction_text) }}</h2></center>
               <div class="gauge gauge--liveupdate" id="gauge">
@@ -343,6 +344,32 @@
     		  <script>
     			var gauge = new Gauge(document.getElementById("gauge"));
     			gauge.value("{{ "{:0.2f}".format(prediction_text/100) }}");
+    	      </script>
+              </div>
+            <br>
+            <div>
+            <br>
+            <center><caption><b>Score Card</b></caption></center>
+            <center><h2>{{ "Cibil Score - {}".format(cibil) }}</h2></center>
+              <div class="gauge gauge--liveupdate" id="gauge1">
+            	<div class="gauge__container">
+            		<div class="gauge__marker"></div>
+            		<div class="gauge__background"></div>
+            		<div class="gauge__center"></div>
+            		<div class="gauge__data"></div>
+            		<div class="gauge__needle"></div>
+            	</div>
+            	<div class="gauge__labels mdl-typography__headline">
+                	<span class="gauge__label--low"><b>300</b></span>
+                	<span class="gauge__label--spacer"></span>
+                	<span class="gauge__label--high"><b>900</b></span>
+            	</div>
+        	  </div>
+        	  <script src="{{url_for('static', filename='js/material-gauge.js')}}"></script>
+              <script src="material-gauge.js"></script>
+    		  <script>
+    			var gauge1 = new Gauge(document.getElementById("gauge1"));
+    			gauge1.value("{{ "{:0.2f}".format(cibil/1000) }}");
     	      </script>
               </div>
           </div>
@@ -444,30 +471,6 @@
               <td>{{info[21]}}</td>
              </tr>
             </table>
-            <div>
-            <center><caption><b>Score Card</b></caption></center>
-            <center><h2>{{ "Cibil Score - {}".format(cibil) }}</h2></center>
-              <div class="gauge gauge--liveupdate" id="gauge1">
-            	<div class="gauge__container">
-            		<div class="gauge__marker"></div>
-            		<div class="gauge__background"></div>
-            		<div class="gauge__center"></div>
-            		<div class="gauge__data"></div>
-            		<div class="gauge__needle"></div>
-            	</div>
-            	<div class="gauge__labels mdl-typography__headline">
-                	<span class="gauge__label--low"><b>300</b></span>
-                	<span class="gauge__label--spacer"></span>
-                	<span class="gauge__label--high"><b>900</b></span>
-            	</div>
-        	  </div>
-        	  <script src="{{url_for('static', filename='js/material-gauge.js')}}"></script>
-              <script src="material-gauge.js"></script>
-    		  <script>
-    			var gauge1 = new Gauge(document.getElementById("gauge1"));
-    			gauge1.value("{{ "{:0.2f}".format(cibil/1000) }}");
-    	      </script>
-              </div>
           </div>
           </div>
       </fieldset>
