@@ -37,6 +37,7 @@ def CIBIL(file):
     name1 = name_segment.find('ConsumerName1').text
     name2 = name_segment.find('ConsumerName2').text
     dob = name_segment.find('DateOfBirth').text
+    dob = '-'.join([dob[:2],dob[2:4],dob[4:]])
     gender = name_segment.find('Gender').text
     if int(gender) == 1:
         gender = 'Female'
@@ -74,10 +75,16 @@ def CIBIL(file):
     except:
         open_date = '-'
         
+    if open_date != '-':
+        open_date = '-'.join([open_date[:2],open_date[2:4],open_date[4:]])
+        
     try:
         last_date = details.find('DateOfLastPayment').text
     except:
         last_date = '-'
+        
+    if last_date != '-':
+        last_date = '-'.join([last_date[:2],last_date[2:4],last_date[4:]])
         
     try:
         amount = details.find('HighCreditOrSanctionedAmount').text
@@ -123,6 +130,9 @@ def CIBIL(file):
         last_enq_date = enquiry.find('DateOfEnquiryFields').text
     except:
         last_enq_date = '-'
+    
+    if last_enq_date != '-':
+        last_enq_date = '-'.join([last_enq_date[:2],last_enq_date[2:4],last_enq_date[4:]])
         
     try:
         last_enq_purpose = enquiry.find('EnquiryPurpose').text
