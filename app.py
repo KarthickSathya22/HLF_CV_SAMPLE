@@ -656,7 +656,16 @@ def predict():
         res.append('Male')
     else:
         res.append('Female')
-    res.append(request.form["pan"])    
+    res.append(request.form["pan"])
+    
+      
+    if int(segment) == 2695:
+        res.append(0)
+    else:
+        #Getting fleet size:
+        fleet = request.form["fleet"] 
+        res.append(fleet)
+        
     predict_request.extend(gender_dict.get(cate))
     predict_request = list(map(float,predict_request))
     predict_request = np.array(predict_request)

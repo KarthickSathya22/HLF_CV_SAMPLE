@@ -330,7 +330,7 @@
           </div>
           <div>
           <p><b>Customer Segment</b></p>
-          <select name="segment" required>
+          <select name="segment" id="seg" onchange="myFunction1()" required>
             <option value="">Select Category</option>
             <option value="2695">First Time Buyer</option>
             <option value="2696">First Time Buyer Plus</option>
@@ -342,6 +342,23 @@
       </div>
       <div class="item">
           <div class="title-block">
+          <div>
+          <p><b>Fleet Size</b></p>
+          <input type="text" name="fleet" id="fleets"/>
+          </div>
+          <script>
+          function myFunction1() {
+          var value = document.getElementById("seg").value;
+          if(value == 2695)
+          {
+          document.getElementById("fleets").disabled = true;
+          }
+          else
+          {
+          document.getElementById("fleets").disabled = false;
+          };
+          }
+          </script>
           <div>
           <p><b>Load Type</b></p>
           <select name="market_load" required>
@@ -355,14 +372,14 @@
           <p><b>Number of Years In Market</b></p>
           <input type="text" name="tot_years" required/>
           </div>
-	      <div>
-          <p><b>Asset Value</b></p>
-          <input type="text" name="asset" required/>
-          </div>
           </div>
          </div>
          <div class="item">
           <div class="title-block">
+          <div>
+          <p><b>Asset Value</b></p>
+          <input type="text" name="asset" required/>
+          </div>
           <div>
           <p><b>HLF Score</b></p>
           <input type="text" name="score" required/>
@@ -371,14 +388,14 @@
           <p><b>Cibil Score</b></p>
           <input type="text" name="another_score" disabled/>
           </div>
-          <div>
-          <p><b>Overdue</b></p>
-          <input type="text" name="od" disabled/>
-          </div>
           </div>
        </div>
        <div class="item">
           <div class="title-block">
+          <div>
+          <p><b>Overdue</b></p>
+          <input type="text" name="od" disabled/>
+          </div>
           <div>
           <p><b>PAN Number</b></p>
           <input type="text" name="pan" required/>
@@ -482,7 +499,7 @@
           </div>
           <div>
           <p><b>Used Years</b></p>
-          <input type="text" name="vehicle_age" id="age_v"/>
+          <input type="text" name="vehicle_age" id="age_v" />
           </div>
           <script>
           function myFunction() {

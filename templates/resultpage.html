@@ -13,7 +13,7 @@
       table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
-      width: 60%;
+      width: 70%;
       }
       td, th {
       border: 1px solid #dddddd;
@@ -354,7 +354,7 @@
       <div class="item">
           <div class="title-block">
           <table border="1">
-          <caption><b>Cibil Report Information</b></caption>
+          <caption><b>Bureau Report Information</b></caption>
              <tr>
               <th>Details</th>
               <th>Values</th>
@@ -439,6 +439,10 @@
               <th>Enquired Amount</th>
               <td style="background-color: lightsteelblue;">{{info[23]}}</td>
              </tr>
+             <tr>
+              <th>Last Enquired Date</th>
+              <td>{{info[21]}}</td>
+             </tr>
             </table>
             <div>
             <center><caption><b>Score Card</b></caption></center>
@@ -474,7 +478,7 @@
           <div class="title-block">
           <div>
           <p><b>Gender</b></p>
-          <input type="text" value="{{data[-2]}}" readonly/>
+          <input type="text" value="{{data[-3]}}" readonly/>
           </div>
           <div>
           <p><b>Number of Dependants</b></p>
@@ -541,17 +545,21 @@
           <input type="text" value="{{data[7]}}" readonly/>
           </div>
           <div>
-          <p><b>Load Type</b></p>
-          <input type="text" value="{{data[8]}}" readonly/>
+          <p><b>Fleet Size</b></p>
+          <input type="text" style="background-color: lightsteelblue;" value="{{data[-1]}}" readonly/>
           </div>
           <div>
-          <p><b>Number of Years In Market</b></p>
-          <input type="text" value="{{data[9]}}" readonly/>
+          <p><b>Load Type</b></p>
+          <input type="text" value="{{data[8]}}" readonly/>
           </div>
           </div>
       </div>
       <div class="item">
           <div class="title-block">
+          <div>
+          <p><b>Number of Years In Market</b></p>
+          <input type="text" value="{{data[9]}}" readonly/>
+          </div>
 	      <div>
           <p><b>Asset Value</b></p>
           <input type="text" value="{{data[10]}}" readonly/>
@@ -564,17 +572,17 @@
           <p><b>Cibil Score</b></p>
           <input type="text" style="background-color: lightsteelblue;" value="{{data[28]}}" readonly/>
           </div>
-          <div>
-          <p><b>Overdue</b></p>
-          <input type="text" style="background-color: lightsteelblue;" value="{{info[15]}}" readonly/>
-          </div>
           </div>
       </div>
       <div class="item">
           <div class="title-block">
           <div>
+          <p><b>Overdue</b></p>
+          <input type="text" value="{{info[15]}}" readonly/>
+          </div>
+          <div>
           <p><b>PAN Number</b></p>
-          <input type="text" value="{{data[-1]}}" readonly/>
+          <input type="text" value="{{data[-2]}}" readonly/>
           </div>
           </div>
       </div>
