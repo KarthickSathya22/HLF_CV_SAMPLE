@@ -432,7 +432,7 @@
              </tr>
              <tr>
               <th>Loan Amount</th>
-              <td  style="background-color: lightsteelblue;">{{info[13]}}</td>
+              <td style="background-color: lightsteelblue;">{{info[13]}}</td>
              </tr>
              <tr>
               <th>Current Balance</th>
@@ -513,7 +513,7 @@
           </div>
           <div>
           <p><b>Total Income per Month</b></p>
-          <input type="text" value="{{data[21]}}" readonly/>
+          <input type="text" value="{{ "{:,}".format(data[21])}}" readonly/>
           </div>
           </div>
       </div>
@@ -521,11 +521,11 @@
           <div class="title-block">
           <div>
           <p><b>Total Expense per Month</b></p>
-          <input type="text" value="{{data[22]}}" readonly/>
+          <input type="text" value="{{"{:,}".format(data[22])}}" readonly/>
           </div>
           <div>
           <p><b>Gross Surplus per Month</b></p>
-          <input type="text" value="{{data[23]}}" readonly/>
+          <input type="text" value="{{"{:,}".format(data[23])}}" readonly/>
           </div>
           <div>
           <p><b>Banking Period</b></p>
@@ -533,7 +533,7 @@
           </div>
           <div>
           <p><b>Avg Balance per Month</b></p>
-          <input type="text" style="background-color: lightsteelblue;" value="{{data[26]}}" readonly/>
+          <input type="text" style="background-color: lightsteelblue;" value="{{"{:,}".format(data[26])}}" readonly/>
           </div>
           </div>
       </div>
@@ -565,7 +565,7 @@
           </div>
 	      <div>
           <p><b>Asset Value</b></p>
-          <input type="text" value="{{data[10]}}" readonly/>
+          <input type="text" value="{{"{:,}".format(data[10])}}" readonly/>
           </div>
           <div>
           <p><b>HLF Score</b></p>
@@ -581,7 +581,7 @@
           <div class="title-block">
           <div>
           <p><b>Overdue</b></p>
-          <input type="text" style="background-color: lightsteelblue;" value="{{info[15]}}" readonly/>
+          <input type="text" value="{{info[15]}}" readonly/>
           </div>
           <div>
           <p><b>PAN Number</b></p>
@@ -605,7 +605,7 @@
           </div>
           <div>
           <p><b>Vehicle Price</b></p>
-          <input type="text" value="{{data[15]}}" readonly/>
+          <input type="text" value="{{"{:,}".format(data[15])}}" readonly/>
           </div>
           <div>
           <p><b>Type of Vehicle</b></p>
@@ -629,11 +629,11 @@
           <div class="title-block">
           <div>
           <p><b>Initial Amount</b></p>
-          <input type="text" value="{{data[16]}}" readonly/>
+          <input type="text" value="{{"{:,}".format(data[16])}}" readonly/>
           </div>
           <div>
           <p><b>Finance Amount</b></p>
-          <input type="text" value="{{data[17]}}" readonly/>
+          <input type="text" value="{{"{:,}".format(data[17])}}" readonly/>
           </div>
           <div>
           <p><b>Interest</b></p>
@@ -653,7 +653,7 @@
           </div>
           <div>
           <p><b>EMI</b></p>
-          <input type="text" value="{{data[19]}}" readonly/>
+          <input type="text" value="{{"{:,}".format(data[19])}}" readonly/>
           </div>
           </div>
       </div>
@@ -661,7 +661,7 @@
           <div class="title-block">
           <div>
           <p><b>Loan Availed</b></p>
-          <input type="text" style="background-color: lightsteelblue;" value="{{data[20]}}" readonly/>
+          <input type="text" style="background-color: lightsteelblue;" value="{{"{:,}".format(data[20])}}" readonly/>
           </div>
           </div>
       </div>

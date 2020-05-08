@@ -36,8 +36,10 @@ def CIBIL(file):
     #NameSegment:
     name1 = name_segment.find('ConsumerName1').text
     name2 = name_segment.find('ConsumerName2').text
+    
     dob = name_segment.find('DateOfBirth').text
     dob = '-'.join([dob[:2],dob[2:4],dob[4:]])
+    
     gender = name_segment.find('Gender').text
     if int(gender) == 1:
         gender = 'Female'
@@ -87,17 +89,18 @@ def CIBIL(file):
         last_date = '-'.join([last_date[:2],last_date[2:4],last_date[4:]])
         
     try:
-        amount = details.find('HighCreditOrSanctionedAmount').text
+        amount = int(details.find('HighCreditOrSanctionedAmount').text)
     except:
         amount = '-'
         
+        
     try:
-        balance = details.find('CurrentBalance').text
+        balance = "{:,}".format(int(details.find('CurrentBalance').text))
     except:
         balance = '-'
         
     try:
-        overdue = details.find('AmountOverdue').text
+        overdue = int(details.find('AmountOverdue').text)
     except:
         overdue = '-'
         
@@ -112,12 +115,12 @@ def CIBIL(file):
         tenure = '-'
     
     try:
-        emi = details.find('EmiAmount').text
+        emi = "{:,}".format(int(details.find('EmiAmount').text))
     except:
         emi = '-'
         
     try:
-        collateral_Value = details.find('ValueOfCollateral').text
+        collateral_Value = "{:,}".format(int(details.find('ValueOfCollateral').text))
     except:
         collateral_Value = '-'
         
@@ -140,7 +143,7 @@ def CIBIL(file):
         last_enq_purpose = '-'
     
     try:
-        last_enq_amt = enquiry.find('EnquiryAmount').text
+        last_enq_amt = "{:,}".format(int(enquiry.find('EnquiryAmount').text))
     except:
         last_enq_amt = '-'
         
@@ -387,7 +390,7 @@ def predict():
     
     asset = request.form["asset"]
     predict_request.append(asset)
-    res.append(asset)
+    res.append(int(asset))
     
     
     cat = request.form["productcat"]
@@ -470,15 +473,15 @@ def predict():
     
     chasasset = request.form["chasasset"]
     predict_request.append(chasasset)
-    res.append(chasasset)
+    res.append(int(chasasset))
     
     chasinitial = request.form["chasinitial"]
     predict_request.append(chasinitial)
-    res.append(chasinitial)
+    res.append(int(chasinitial))
     
     chasfin = int(chasasset) - int(chasinitial)
     predict_request.append(chasfin)
-    res.append(chasfin)
+    res.append(int(chasfin))
     
     fininter = request.form["finaninterest"]
     predict_request.append(fininter)
@@ -491,19 +494,21 @@ def predict():
     
     gross_loan = cibil_data[13]
     predict_request.append(gross_loan)
-    res.append(gross_loan)
+    res.append(int(gross_loan))
+    if cibil_data[13] != '-':
+        cibil_data[13] = "{:,}".format(int(cibil_data[13]))
     
     income = request.form["totincome"]
     predict_request.append(income)
-    res.append(income)
+    res.append(int(income))
     
     expense = request.form["totexpense"]
     predict_request.append(expense)
-    res.append(expense)
+    res.append(int(expense))
     
     surplus = int(income) - int(expense)
     predict_request.append(surplus)
-    res.append(surplus)
+    res.append(int(surplus))
     
     s1 = request.form["vehicle"]
     s1_cat = {"1":"New Vehicle","2":"Used Vehicle"}
@@ -574,7 +579,7 @@ def predict():
         clobal = (np.average(balance_month))
    
     predict_request.append("{:.2f}".format(clobal))
-    res.append("{:.2f}".format(clobal))
+    res.append(int(clobal))
     
     score = request.form["score"]
     predict_request.append(score)
@@ -610,7 +615,7 @@ def predict():
         predict_request.append(0)
         res.append(0)
         
-    od = [1 if int(cibil_data[15])>0 else 0][0]
+    od = [1 if cibil_data[15] != '-' else 0][0]
     od_cat = {0:"No",1:"Yes"}
     res.append(od_cat.get(int(od)))
     if int(od) == 0:
@@ -619,6 +624,10 @@ def predict():
     elif int(od) == 1:
         predict_request.append(0)
         res.append(0)
+        
+    #For handling overdue amount:
+    if cibil_data[15] != '-':
+        cibil_data[15] = "{:,}".format(int(cibil_data[15]))
         
     bank_p = request.form["bank_period"]
     bank_p_cat = {1:"More than 3 years",
